@@ -23,7 +23,15 @@
     nav a{text-decoration:none;color:var(--muted);font-size:.85rem}
     nav a:hover{color:var(--gold)}
 
-    header{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:7rem 1.5rem;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.95)),url('https://images.unsplash.com/photo-1519682337058-a94d519337bc') center/cover no-repeat}
+      header {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 7rem 1.5rem;
+          background: linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.95)),url('./images/backgroundPT.jpeg') center/cover no-repeat
+      }
     header h1{font-family:'Cinzel',serif;font-size:clamp(3.2rem,7vw,5.5rem);color:var(--gold);text-shadow:0 0 40px var(--gold-soft)}
     header p{max-width:760px;margin:1.5rem auto 2.5rem;color:#d1d5db}
 
@@ -54,7 +62,7 @@
 <body>
 
 <nav>
-  <div class="logo">PORTUGAL</div>
+    <div class="logo"> <img src="C:\Users\User01\Source\Repos\hugoac26\Where-Winds\images\logo_guild_--removebg-preview.png" style="width: 10%; height: 10%;"> PORTUGAL</div>
   <ul>
     <li><a href="#membros">Membros</a></li>
     <li><a href="#rankings">Rankings</a></li>
@@ -66,7 +74,7 @@
 <header>
   <div>
     <h1>PORTUGAL</h1>
-    <p>Guild portuguesa top-tier em <strong>Where Winds Meet</strong>. Domínio absoluto através de organização e excelência.</p>
+    <p>Guild portuguesa em <strong>Where Winds Meet</strong>.  Não competimos — dominamos.</p>
     <a href="#membros" class="btn">Entrar no Quartel</a>
   </div>
 </header>
@@ -89,8 +97,10 @@
 <section id="privado">
   <h2>Área Privada (Login Discord)</h2>
   <p>Acesso exclusivo para membros da guild através do Discord.</p>
-  <a class="btn" href="https://discord.com/api/oauth2/authorize?client_id=SEU_CLIENT_ID&redirect_uri=SEU_REDIRECT_URI&response_type=token&scope=identify">Login com Discord</a>
-  <div class="private" id="privateArea">
+  <br />
+      <a href="https://discord.com/api/oauth2/authorize?client_id=SEU_CLIENT_ID&redirect_uri=SEU_REDIRECT_URI&response_type=token&scope=identify" class="btn">Login com Discord</a>
+
+       <div class="private" id="privateArea">
     <div class="card">
       <h3>Área Interna da Guild</h3>
       <p id="userInfo">Autenticado com sucesso.</p>
@@ -99,20 +109,23 @@
 </section>
 
 <footer>
-  <p>© 2026 PORTUGAL — Guild Oficial Top-Tier</p>
+    <p>© 2026 Oficial — Guild PORTUGAL</p>
 </footer>
 
 <script>
   const members=[
     {id:'gm',nome:'Skystrap',rank:'Guild Master',classe:'Silkbind',arma:'Umbrella & Fan',build:'Meta DPS',score:98},
-    {id:'of1',nome:'Oficial01',rank:'Oficial',classe:'Lanceiro',arma:'Lança',build:'PvP Control',score:90},
+    {id:'vc',nome:'Vice',rank:'Vice Master',classe:'Lanceiro',arma:'Lança',build:'PvP Control',score:90},
     {id:'vet1',nome:'VeteranoX',rank:'Veterano',classe:'Assassino',arma:'Adagas',build:'Burst Crit',score:85}
   ];
 
   const builds=[
-    {classe:'Espadachim',descricao:'DPS Sustained – Meta atual'},
-    {classe:'Assassino',descricao:'Burst PvP – Alta mobilidade'},
-    {classe:'Arqueiro',descricao:'Ranged DPS – Safe damage'}
+    {classe:'Bellstrike - Splendor',descricao:'Melee/DPS – S Tier'},
+    {classe:'Bellstrike - Umbra ',descricao:'DPS – S Tier'},
+    {classe:'Silkbind - Deluge',descricao:'Healer – S Tier Support'},
+    {classe:'Silkbind - Jade', descricao: ' DPS – Ranged'},
+    {classe:'Bamboocut - Wind ', descricao: ' DPS – Assasin'},
+    {classe:'Stonesplit - Might', descricao: 'Tank'}
   ];
 
   const membersDiv=document.getElementById('members');
