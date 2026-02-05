@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PORTUGAL | Guild Top-Tier – Where Winds Meet</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#05070c;--bg-soft:#0c1220;--gold:#d6b15f;--gold-soft:rgba(214,177,95,.25);
+      --text:#e5e7eb;--muted:#9ca3af;--accent:#7c3aed;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;background:radial-gradient(circle at top,#0f172a,var(--bg));color:var(--text)}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(5,7,12,.8);backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid rgba(255,255,255,.05)}
+    nav .logo{font-family:'Cinzel',serif;color:var(--gold);letter-spacing:3px;font-size:1.1rem}
+    nav ul{display:flex;gap:1.2rem;list-style:none}
+    nav a{text-decoration:none;color:var(--muted);font-size:.85rem}
+    nav a:hover{color:var(--gold)}
+
+    header{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:7rem 1.5rem;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.95)),url('https://images.unsplash.com/photo-1519682337058-a94d519337bc') center/cover no-repeat}
+    header h1{font-family:'Cinzel',serif;font-size:clamp(3.2rem,7vw,5.5rem);color:var(--gold);text-shadow:0 0 40px var(--gold-soft)}
+    header p{max-width:760px;margin:1.5rem auto 2.5rem;color:#d1d5db}
+
+    .btn{padding:.9rem 2.2rem;border-radius:999px;background:linear-gradient(135deg,var(--accent),#4c1d95);color:#fff;text-decoration:none;font-weight:600;box-shadow:0 12px 35px rgba(124,58,237,.35)}
+
+    section{max-width:1200px;margin:auto;padding:5rem 1.5rem}
+    h2{font-family:'Cinzel',serif;color:var(--gold);font-size:2.3rem;margin-bottom:1rem}
+    section>p{color:var(--muted);max-width:820px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;margin-top:3rem}
+    .card{background:linear-gradient(180deg,var(--bg-soft),#070b18);padding:2rem;border-radius:1.4rem;border:1px solid rgba(255,255,255,.06)}
+
+    /* PERFIL */
+    .profile span{font-size:.7rem;color:var(--gold)}
+    .profile ul{margin-top:.6rem;font-size:.85rem;color:var(--muted);list-style:none}
+
+    /* RANKING */
+    .ranking li{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+
+    /* AREA PRIVADA */
+    .private{display:none}
+    .private.active{display:block}
+
+    footer{background:#02040a;padding:3rem 1.5rem;text-align:center;border-top:1px solid rgba(255,255,255,.05)}
+    footer p{font-size:.85rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">PORTUGAL</div>
+  <ul>
+    <li><a href="#membros">Membros</a></li>
+    <li><a href="#rankings">Rankings</a></li>
+    <li><a href="#builds">Builds</a></li>
+    <li><a href="#privado">Área Privada</a></li>
+  </ul>
+</nav>
+
+<header>
+  <div>
+    <h1>PORTUGAL</h1>
+    <p>Guild portuguesa top-tier em <strong>Where Winds Meet</strong>. Domínio absoluto através de organização e excelência.</p>
+    <a href="#membros" class="btn">Entrar no Quartel</a>
+  </div>
+</header>
+
+<section id="membros">
+  <h2>Membros</h2>
+  <div class="grid" id="members"></div>
+</section>
+
+<section id="rankings">
+  <h2>Rankings Internos</h2>
+  <ul class="ranking" id="ranking"></ul>
+</section>
+
+<section id="builds">
+  <h2>Builds Recomendadas</h2>
+  <div class="grid" id="buildsGrid"></div>
+</section>
+
+<section id="privado">
+  <h2>Área Privada (Login Discord)</h2>
+  <p>Acesso exclusivo para membros da guild através do Discord.</p>
+  <a class="btn" href="https://discord.com/api/oauth2/authorize?client_id=SEU_CLIENT_ID&redirect_uri=SEU_REDIRECT_URI&response_type=token&scope=identify">Login com Discord</a>
+  <div class="private" id="privateArea">
+    <div class="card">
+      <h3>Área Interna da Guild</h3>
+      <p id="userInfo">Autenticado com sucesso.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 PORTUGAL — Guild Oficial Top-Tier</p>
+</footer>
+
+<script>
+  const members=[
+    {id:'gm',nome:'NomeGM',rank:'Guild Master',classe:'Espadachim',arma:'Katana',build:'Meta DPS',score:98},
+    {id:'of1',nome:'Oficial01',rank:'Oficial',classe:'Lanceiro',arma:'Lança',build:'PvP Control',score:90},
+    {id:'vet1',nome:'VeteranoX',rank:'Veterano',classe:'Assassino',arma:'Adagas',build:'Burst Crit',score:85}
+  ];
+
+  const builds=[
+    {classe:'Espadachim',descricao:'DPS Sustained – Meta atual'},
+    {classe:'Assassino',descricao:'Burst PvP – Alta mobilidade'},
+    {classe:'Arqueiro',descricao:'Ranged DPS – Safe damage'}
+  ];
+
+  const membersDiv=document.getElementById('members');
+  members.forEach(m=>{
+    membersDiv.innerHTML+=`<a href="perfil.html#${m.id}" class="card profile"><span>${m.rank}</span><h3>${m.nome}</h3><ul><li>Classe: ${m.classe}</li><li>Arma: ${m.arma}</li><li>Build: ${m.build}</li></ul></a>`;
+  });
+
+  const ranking=document.getElementById('ranking');
+  members.sort((a,b)=>b.score-a.score).forEach((m,i)=>{
+    ranking.innerHTML+=`<li><span>#${i+1} ${m.nome}</span><strong>${m.score}</strong></li>`;
+  });
+
+  const buildsGrid=document.getElementById('buildsGrid');
+  builds.forEach(b=>{
+    buildsGrid.innerHTML+=`<div class="card"><h3>${b.classe}</h3><p>${b.descricao}</p></div>`;
+  });
+
+  function login(){
+    document.getElementById('privateArea').classList.add('active');
+  }
+</script>
+
+</body>
+</html>
+
+<!-- ============================= -->
+<!-- PERFIL INDIVIDUAL DO MEMBRO -->
+<!-- Guardar como perfil.html    -->
+<!-- ============================= -->
+
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil do Membro | PORTUGAL</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body{margin:0;font-family:'Inter',sans-serif;background:radial-gradient(circle at top,#0f172a,#05070c);color:#e5e7eb}
+    header{text-align:center;padding:5rem 1.5rem}
+    h1{font-family:'Cinzel',serif;color:#d6b15f;font-size:3rem}
+    .card{max-width:800px;margin:2rem auto;background:linear-gradient(180deg,#0c1220,#070b18);padding:2rem;border-radius:1.5rem;border:1px solid rgba(255,255,255,.08)}
+    .tag{color:#d6b15f;font-size:.85rem}
+    ul{list-style:none;padding:0;margin-top:1rem}
+    li{margin-bottom:.5rem;color:#9ca3af}
+    a{color:#7c3aed;text-decoration:none}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="nome">Membro</h1>
+  <p class="tag" id="rank"></p>
+</header>
+
+<div class="card" id="perfil"></div>
+
+<script>
+  const membros={
+    gm:{nome:'NomeGM',rank:'Guild Master',classe:'Espadachim',arma:'Katana',build:'Meta DPS',descricao:'Líder estratégico da guild.'},
+    of1:{nome:'Oficial01',rank:'Oficial',classe:'Lanceiro',arma:'Lança',build:'PvP Control',descricao:'Responsável por eventos PvP.'},
+    vet1:{nome:'VeteranoX',rank:'Veterano',classe:'Assassino',arma:'Adagas',build:'Burst Crit',descricao:'Especialista em eliminações rápidas.'}
+  };
+
+  const id=location.hash.replace('#','');
+  const m=membros[id];
+
+  if(m){
+    document.getElementById('nome').innerText=m.nome;
+    document.getElementById('rank').innerText=m.rank;
+    document.getElementById('perfil').innerHTML=`
+      <ul>
+        <li><strong>Classe:</strong> ${m.classe}</li>
+        <li><strong>Arma:</strong> ${m.arma}</li>
+        <li><strong>Build:</strong> ${m.build}</li>
+        <li><strong>Descrição:</strong> ${m.descricao}</li>
+      </ul>
+      <br />
+      <a href="index.html">← Voltar à Guild</a>`;
+  } else {
+    document.getElementById('perfil').innerText='Membro não encontrado.';
+  }
+</script>
+
+</body>
+</html>
