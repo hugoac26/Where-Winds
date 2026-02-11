@@ -229,6 +229,9 @@
 
         <script>
 
+            let mostrarTodosMembros = false;
+            const LIMITE_MEMBROS = 6;
+
             const builds = [
                 { classe: 'Bellstrike - Splendor', descricao: 'Melee/DPS – S Tier' },
                 { classe: 'Bellstrike - Umbra ', descricao: 'DPS – S Tier' },
@@ -275,7 +278,11 @@ async function loadMembers() {
                 const membersDiv = document.getElementById('members');
                 membersDiv.innerHTML = "";
 
-                members.forEach(m => {
+                const lista = mostrarTodosMembros
+                    ? members
+                    : members.slice(0, LIMITE_MEMBROS);
+
+                lista.forEach(m => {
                     membersDiv.innerHTML += `
         <a href="perfil.html#${m.id}" class="card profile">
             <span>${m.rank}</span>
@@ -287,6 +294,31 @@ async function loadMembers() {
             </ul>
         </a>`;
                 });
+
+                renderBotaoMembros();
+            }
+
+            function renderBotaoMembros() {
+                const section = document.getElementById("membros");
+
+                let botao = document.getElementById("toggleMembros");
+
+                if (!botao) {
+                    botao = document.createElement("button");
+                    botao.id = "toggleMembros";
+                    botao.className = "btn";
+                    botao.style.marginTop = "30px";
+                    section.appendChild(botao);
+                }
+
+                botao.textContent = mostrarTodosMembros
+                    ? "Mostrar menos membros"
+                    : "Mostrar mais membros";
+
+                botao.onclick = () => {
+                    mostrarTodosMembros = !mostrarTodosMembros;
+                    renderMembers();
+                };
             }
 
             function renderRanking() {
