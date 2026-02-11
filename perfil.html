@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-PT">
 <head>
     <meta charset="UTF-8" />
@@ -69,11 +69,38 @@
     <div class="card" id="perfil"></div>
 
     <script>
-  const membros={
-    gm:{nome:'Skystrap',rank:'Guild Master',classe:'Espadachim',arma:'Katana',build:'Meta DPS',descricao:'Líder estratégico da guild.'},
-    of1:{nome:'Oficial01',rank:'Oficial',classe:'Lanceiro',arma:'Lança',build:'PvP Control',descricao:'Responsável por eventos PvP.'},
-    vet1:{nome:'VeteranoX',rank:'Veterano',classe:'Assassino',arma:'Adagas',build:'Burst Crit',descricao:'Especialista em eliminações rápidas.'}
-  };
+        let members = [];
+
+        async function loadMembers() {
+            try {
+                const response = await fetch("https://docs.google.com/spreadsheets/d/116Qoa8HD_iOYKIw61rdX0D6wkaoNU0cFsBAPEOGEO5U/export?format=csv");
+                const data = await response.text();
+
+                const rows = data.split("\n").slice(1); // remove cabeçalho
+
+                members = rows
+                    .filter(row => row.trim() !== "")
+                    .map(row => {
+                        const [id, nome, rank, classe, arma, build, score] = row.split(",");
+
+                        return {
+                            id: id?.trim(),
+                            nome: nome?.trim(),
+                            rank: rank?.trim(),
+                            classe: classe?.trim(),
+                            arma: arma?.trim(),
+                            build: build?.trim(),
+                            score: parseInt(score?.trim()) || 0
+                        };
+                    });
+
+                renderMembers();
+                renderRanking();
+
+            } catch (error) {
+                console.error("Erro ao carregar membros:", error);
+            }
+        }
 
   const id=location.hash.replace('#','');
   const m=membros[id];
