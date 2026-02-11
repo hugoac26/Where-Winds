@@ -295,6 +295,7 @@ async function loadMembers() {
 
                 members
                     .sort((a, b) => b.score - a.score)
+                    .slice(0, 10)
                     .forEach((m, i) => {
                         ranking.innerHTML += `
             <li>
@@ -318,6 +319,7 @@ async function loadMembers() {
 
 </body>
 </html>
+
 
 
 
