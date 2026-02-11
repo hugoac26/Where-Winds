@@ -30,125 +30,266 @@
           justify-content: center;
           text-align: center;
           padding: 7rem 1.5rem;
-          background: linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.95)),url('./images/backgroundPT.jpeg') center/cover no-repeat
+          /*background: linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.95)),url() center/cover no-repeat*/
       }
-    header h1{font-family:'Cinzel',serif;font-size:clamp(3.2rem,7vw,5.5rem);color:var(--gold);text-shadow:0 0 40px var(--gold-soft)}
-    header p{max-width:760px;margin:1.5rem auto 2.5rem;color:#d1d5db}
+          header h1 {
+              font-family: 'Cinzel',serif;
+              font-size: clamp(3.2rem,7vw,5.5rem);
+              color: var(--gold);
+              text-shadow: 0 0 40px var(--gold-soft)
+          }
 
-    .btn{padding:.9rem 2.2rem;border-radius:999px;background:linear-gradient(135deg,var(--accent),#4c1d95);color:#fff;text-decoration:none;font-weight:600;box-shadow:0 12px 35px rgba(124,58,237,.35)}
+          header p {
+              max-width: 760px;
+              margin: 1.5rem auto 2.5rem;
+              color: #d1d5db
+          }
 
-    section{max-width:1200px;margin:auto;padding:5rem 1.5rem}
-    h2{font-family:'Cinzel',serif;color:var(--gold);font-size:2.3rem;margin-bottom:1rem}
-    section>p{color:var(--muted);max-width:820px}
+          .btn {
+              padding: .9rem 2.2rem;
+              border-radius: 999px;
+              background: linear-gradient(135deg,var(--accent),#4c1d95);
+              color: #fff;
+              text-decoration: none;
+              font-weight: 600;
+              box-shadow: 0 12px 35px rgba(124,58,237,.35)
+          }
 
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;margin-top:3rem}
-    .card{background:linear-gradient(180deg,var(--bg-soft),#070b18);padding:2rem;border-radius:1.4rem;border:1px solid rgba(255,255,255,.06)}
+          section {
+              max-width: 1200px;
+              margin: auto;
+              padding: 5rem 1.5rem
+          }
 
-    /* PERFIL */
-    .profile span{font-size:.7rem;color:var(--gold)}
-    .profile ul{margin-top:.6rem;font-size:.85rem;color:var(--muted);list-style:none}
+          h2 {
+              font-family: 'Cinzel',serif;
+              color: var(--gold);
+              font-size: 2.3rem;
+              margin-bottom: 1rem
+          }
 
-    /* RANKING */
-    .ranking li{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+          section > p {
+              color: var(--muted);
+              max-width: 820px
+          }
 
-    /* AREA PRIVADA */
-    .private{display:none}
-    .private.active{display:block}
+          .grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+              gap: 2rem;
+              margin-top: 3rem
+          }
 
-    footer{background:#02040a;padding:3rem 1.5rem;text-align:center;border-top:1px solid rgba(255,255,255,.05)}
-    footer p{font-size:.85rem;color:var(--muted)}
+          .card {
+              background: linear-gradient(180deg,var(--bg-soft),#070b18);
+              padding: 2rem;
+              border-radius: 1.4rem;
+              border: 1px solid rgba(255,255,255,.06)
+          }
+          /* PERFIL */
+          .profile span {
+              font-size: .7rem;
+              color: var(--gold)
+          }
+
+          .profile ul {
+              margin-top: .6rem;
+              font-size: .85rem;
+              color: var(--muted);
+              list-style: none
+          }
+          /* RANKING */
+          .ranking li {
+              display: flex;
+              justify-content: space-between;
+              padding: .6rem 0;
+              border-bottom: 1px solid rgba(255,255,255,.05)
+          }
+          /* AREA PRIVADA */
+          .private {
+              display: none
+          }
+
+              .private.active {
+                  display: block
+              }
+
+          footer {
+              background: #02040a;
+              padding: 3rem 1.5rem;
+              text-align: center;
+              border-top: 1px solid rgba(255,255,255,.05)
+          }
+
+              footer p {
+                  font-size: .85rem;
+                  color: var(--muted)
+              }
+          /*VIDEO*/
+          .video-bg {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100vw;
+              height: 100vh;
+              overflow: hidden;
+              z-index: -2;
+          }
+
+              .video-bg video {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+              }
+          /* gradiente por cima do vídeo */
+          .overlay {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100vw;
+              height: 100vh;
+              background: linear-gradient( to bottom, rgba(0,0,0,.55), rgba(0,0,0,.95) );
+              z-index: -1;
+          }
+          /* conteúdo normal */
+          .content {
+              position: relative;
+              z-index: 1;
+          }
   </style>
 </head>
 <body>
-
-<nav>
-    <div class="logo"> <img src="C:\Users\User01\Source\Repos\hugoac26\Where-Winds\images\logo_guild_--removebg-preview.png" style="width: 10%; height: 10%;"> PORTUGAL</div>
-  <ul>
-    <li><a href="#membros">Membros</a></li>
-    <li><a href="#rankings">Rankings</a></li>
-    <li><a href="#builds">Builds</a></li>
-    <li><a href="#privado">Área Privada</a></li>
-  </ul>
-</nav>
-
-<header>
-  <div>
-    <h1>PORTUGAL</h1>
-    <p>Guild portuguesa em <strong>Where Winds Meet</strong>.  Não competimos — dominamos.</p>
-    <a href="#membros" class="btn">Entrar no Quartel</a>
-  </div>
-</header>
-
-<section id="membros">
-  <h2>Membros</h2>
-  <div class="grid" id="members"></div>
-</section>
-
-<section id="rankings">
-  <h2>Rankings Internos</h2>
-  <ul class="ranking" id="ranking"></ul>
-</section>
-
-<section id="builds">
-  <h2>Builds Recomendadas</h2>
-  <div class="grid" id="buildsGrid"></div>
-</section>
-
-<section id="privado">
-  <h2>Área Privada (Login Discord)</h2>
-  <p>Acesso exclusivo para membros da guild através do Discord.</p>
-  <br />
-      <a href="https://discord.com/api/oauth2/authorize?client_id=SEU_CLIENT_ID&redirect_uri=SEU_REDIRECT_URI&response_type=token&scope=identify" class="btn">Login com Discord</a>
-
-       <div class="private" id="privateArea">
-    <div class="card">
-      <h3>Área Interna da Guild</h3>
-      <p id="userInfo">Autenticado com sucesso.</p>
+    <div class="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="./images/trailer.mp4" type="video/mp4">
+        </video>
     </div>
-  </div>
-</section>
 
-<footer>
-    <p>© Criada em NOV 2025 — Guild PORTUGAL</p>
-</footer>
+    <div class="overlay"></div>
 
-<script>
-  const members=[
-    {id:'gm',nome:'Skystrap',rank:'Guild Master',classe:'Silkbind - Jade',arma:'Umbrella & Fan',build:'Meta DPS',score:2375},
-    {id: 'vc', nome: 'Vice', rank: 'Vice Master', classe: 'Bellstrike - Splendor', arma: 'Umbrella & Fan',build:'PvP Control',score:2888},
-    {id: 'vet1', nome: 'Veterano', rank: 'Veterano', classe: 'Bamboocut - Wind', arma: 'Adagas', build: 'Burst Crit', score: 1900},
-      { id: 'Membro1', nome: 'Membro1', rank: 'Membro1', classe: 'Silkbind - Deluge', arma: 'Umbrella & Fan', build: 'Burst Crit', score: 1500},
-      { id: 'Membro2', nome: 'Membro2', rank: 'Membro2', classe: 'Stonesplit - Might', arma: 'Adagas', build: 'Burst Crit', score: 1300}
-  ];
+    <nav>
+        <div class="logo"> <img src="C:\Users\hugoa\source\repos\hugoac26\Where-Winds\images\logo_guild_--removebg-preview.png" style="width: 10%; height: 10%;"> PORTUGAL</div>
+        <a href="https://discord.gg/J6PeXW7vHj"><img src="C:\Users\hugoa\source\repos\hugoac26\Where-Winds\images\DISCORD.png" style="width: 20%; height: 20%;"> </a>
+        <ul>
 
-  const builds=[
-    {classe:'Bellstrike - Splendor',descricao:'Melee/DPS – S Tier'},
-    {classe:'Bellstrike - Umbra ',descricao:'DPS – S Tier'},
-    {classe:'Silkbind - Deluge',descricao:'Healer – S Tier Support'},
-    {classe:'Silkbind - Jade', descricao: ' DPS – Ranged'},
-    {classe:'Bamboocut - Wind ', descricao: ' DPS – Assasin'},
-    {classe:'Stonesplit - Might', descricao: 'Tank'}
-  ];
+            <li><a href="#membros">Membros</a></li>
+            <li><a href="#rankings">Rankings</a></li>
+            <li><a href="#builds">Builds</a></li>
+            <li><a href="#privado">Área Privada</a></li>
+        </ul>
+    </nav>
 
-  const membersDiv=document.getElementById('members');
-  members.forEach(m=>{
-    membersDiv.innerHTML+=`<a href="perfil.html#${m.id}" class="card profile"><span>${m.rank}</span><h3>${m.nome}</h3><ul><li>Classe: ${m.classe}</li><li>Arma: ${m.arma}</li><li>Build: ${m.build}</li></ul></a>`;
-  });
+    <header>
+        <div>
+            <img src="C:\Users\hugoa\source\repos\hugoac26\Where-Winds\images\logo_guild_--removebg-preview.png" style="width: 50%; height: 50%;">
+            <h1>PORTUGAL</h1>
+            <p>Guild portuguesa em <strong>Where Winds Meet</strong>.  Não competimos — dominamos.</p>
+            <a href="#membros" class="btn">Entrar no Quartel</a>
+        </div>
 
-  const ranking=document.getElementById('ranking');
-  members.sort((a,b)=>b.score-a.score).forEach((m,i)=>{
-    ranking.innerHTML+=`<li><span>#${i+1} ${m.nome}</span><strong>${m.score}</strong></li>`;
-  });
+    </header>
+    <section id="membros">
+        <h2>Membros</h2>
+        <div class="grid" id="members"></div>
+    </section>
 
-  const buildsGrid=document.getElementById('buildsGrid');
-  builds.forEach(b=>{
-    buildsGrid.innerHTML+=`<div class="card"><h3>${b.classe}</h3><p>${b.descricao}</p></div>`;
-  });
+        <section id="horarios">
+            <h2>horários da guild</h2>
+            <div class="grid" id="horarios"></div>
+            <img src="C:\Users\hugoa\source\repos\hugoac26\Where-Winds\images\horarios guild.png" style="width: 60%; height: 60%;">
+        </section>
 
-  function login(){
-    document.getElementById('privateArea').classList.add('active');
-  }
-</script>
+        <section id="rankings">
+            <h2>Rankings Internos</h2>
+            <ul class="ranking" id="ranking"></ul>
+        </section>
+
+        <section id="builds">
+            <h2>Builds Recomendadas</h2>
+            <div class="grid" id="buildsGrid"></div>
+        </section>
+
+        <section id="privado">
+            <h2>Área Privada (Login Discord)</h2>
+            <p>Acesso exclusivo para membros da guild através do Discord.</p>
+            <br />
+            <a href="https://discord.com/api/oauth2/authorize?client_id=SEU_CLIENT_ID&redirect_uri=SEU_REDIRECT_URI&response_type=token&scope=identify" class="btn">Login com Discord</a>
+
+            <div class="private" id="privateArea">
+                <div class="card">
+                    <h3>Área Interna da Guild</h3>
+                    <p id="userInfo">Autenticado com sucesso.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© Criada em NOV 2025 — Guild PORTUGAL</p>
+        </footer>
+
+        <script>
+            const members = [
+                { id: 'gm', nome: 'Skystrap', rank: 'Guild Master', classe: 'Silkbind - Jade', arma: 'Umbrella & Fan', build: 'DPS – Ranged', score: 2375 },
+                { id: 'vc', nome: 'Vice', rank: 'Vice Master', classe: 'Bellstrike - Splendor', arma: 'Nameless Sword & Nameless Spear', build: 'Melee/DPS – S Tier', score: 2888 },
+                { id: 'vet1', nome: 'Veterano', rank: 'Veterano', classe: 'Bamboocut - Wind', arma: 'Infernal blades & Rope Dart', build: 'DPS – Assasin', score: 1900 },
+                { id: 'Membro1', nome: 'Membro1', rank: 'Membro1', classe: 'Silkbind - Deluge', arma: 'Umbrella & Fan', build: 'Healer – S Tier Support', score: 1500 },
+                { id: 'Membro2', nome: 'Membro2', rank: 'Membro2', classe: 'Stonesplit - Might', arma: 'Thundercry Blade & Stormbreaker Spear', build: 'Tank', score: 1300 }
+            ];
+
+            const builds = [
+                { classe: 'Bellstrike - Splendor', descricao: 'Melee/DPS – S Tier' },
+                { classe: 'Bellstrike - Umbra ', descricao: 'DPS – S Tier' },
+                { classe: 'Silkbind - Deluge', descricao: 'Healer – S Tier Support' },
+                { classe: 'Silkbind - Jade', descricao: ' DPS – Ranged' },
+                { classe: 'Bamboocut - Wind ', descricao: ' DPS – Assasin' },
+                { classe: 'Stonesplit - Might', descricao: 'Tank' }
+            ];
+
+
+            function renderMembers() {
+                const membersDiv = document.getElementById('members');
+                membersDiv.innerHTML = "";
+
+                members.forEach(m => {
+                    membersDiv.innerHTML += `
+        <a href="perfil.html#${m.id}" class="card profile">
+            <span>${m.rank}</span>
+            <h3>${m.nome}</h3>
+            <ul>
+                <li>Classe: ${m.classe}</li>
+                <li>Arma: ${m.arma}</li>
+                <li>Build: ${m.build}</li>
+            </ul>
+        </a>`;
+                });
+            }
+
+            function renderRanking() {
+                const ranking = document.getElementById('ranking');
+                ranking.innerHTML = "";
+
+                members
+                    .sort((a, b) => b.score - a.score)
+                    .forEach((m, i) => {
+                        ranking.innerHTML += `
+            <li>
+                <span>#${i + 1} ${m.nome}</span>
+                <strong>${m.score}</strong>
+            </li>`;
+                    });
+            }
+            const buildsGrid = document.getElementById('buildsGrid');
+            builds.forEach(b => {
+                buildsGrid.innerHTML += `<div class="card"><h3>${b.classe}</h3><p>${b.descricao}</p></div>`;
+            });
+
+            function login() {
+                document.getElementById('privateArea').classList.add('active');
+            }
+
+
+            loadMembers();
+        </script>
 
 </body>
 </html>
